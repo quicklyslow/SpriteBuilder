@@ -15,7 +15,7 @@
 
 - (void)setMargin:(float)margin
 {
-    margin = clampf(margin, 0, 0.5);
+    //margin = clampf(margin, 0, 0.5);
 	[super setMargin:margin];
 }
 
@@ -23,13 +23,13 @@
 
 - (void)setMarginLeft:(float)marginLeft
 {
-    marginLeft = clampf(marginLeft, 0, 1);
-	
-	if(self.marginRight + marginLeft >= 1)
+    //marginLeft = clampf(marginLeft, 0, 1);
+	float textureWidth = self.textureRect.size.width;
+	if(textureWidth > 0 && self.marginRight + marginLeft >= textureWidth)
 	{
         dispatch_async(dispatch_get_main_queue(), ^{
             [[InspectorController sharedController] refreshProperty:@"marginLeft"];
-		    [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The left & right margins should add up to less than 1"];
+		    [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The left & right margins should add up to less than texture width"];
         });
         return;
 	}
@@ -39,12 +39,13 @@
 
 - (void)setMarginRight:(float)marginRight
 {
-    marginRight = clampf(marginRight, 0, 1);
-	if(self.marginLeft + marginRight >= 1)
+    //marginRight = clampf(marginRight, 0, 1);
+    float textureWidth = self.textureRect.size.width;
+	if(textureWidth > 0 && self.marginLeft + marginRight >= textureWidth)
 	{
         dispatch_async(dispatch_get_main_queue(), ^{
             [[InspectorController sharedController] refreshProperty:@"marginRight"];
-            [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The left & right margins should add up to less than 1"];
+            [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The left & right margins should add up to less than texture width"];
         });
         return;
 	}
@@ -54,12 +55,13 @@
 
 - (void)setMarginTop:(float)marginTop
 {
-    marginTop = clampf(marginTop, 0, 1);
-	if(self.marginBottom + marginTop >= 1)
+    //marginTop = clampf(marginTop, 0, 1);
+    float textureHeight = self.textureRect.size.height;
+	if(textureHeight > 0 && self.marginBottom + marginTop >= textureHeight)
 	{
         dispatch_async(dispatch_get_main_queue(), ^{
             [[InspectorController sharedController] refreshProperty:@"marginTop"];
-		    [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The top & bottom margins should add up to less than 1"];
+		    [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The top & bottom margins should add up to less than texture height"];
         });
 		return;
 	}
@@ -70,12 +72,13 @@
 
 - (void)setMarginBottom:(float)marginBottom
 {
-    marginBottom = clampf(marginBottom, 0, 1);
-	if(self.marginTop + marginBottom >= 1)
+    //marginBottom = clampf(marginBottom, 0, 1);
+    float textureHeight = self.textureRect.size.height;
+	if(textureHeight > 0 && self.marginTop + marginBottom >= textureHeight)
 	{
         dispatch_async(dispatch_get_main_queue(), ^{
             [[InspectorController sharedController] refreshProperty:@"marginBottom"];
-            [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The top & bottom margins should add up to less than 1"];
+            [[AppDelegate appDelegate] modalDialogTitle:@"Margin Restrictions" message:@"The top & bottom margins should add up to less than texture height"];
         });
 		return;
 	}

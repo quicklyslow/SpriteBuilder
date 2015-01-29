@@ -11,7 +11,7 @@
 	<key>inheritsFrom</key>
 	<string>CCControl</string>
 	<key>canHaveChildren</key>
-	<false/>
+	<true/>
 	<key>className</key>
 	<string>CCButton</string>
 	<key>editorClassName</key>
@@ -69,7 +69,7 @@
 				<string>contentSize</string>
 			</array>
 			<key>default</key>
-			<string>Title</string>
+			<string></string>
 			<key>displayName</key>
 			<string>Title</string>
 			<key>type</key>
@@ -127,7 +127,7 @@
 			<key>default</key>
 			<array>
 				<string></string>
-				<string>ccbResources/ccbButtonNormal.png</string>
+				<string></string>
 			</array>
 			<key>affectsProperties</key>
 			<array>
@@ -222,7 +222,7 @@
 			<key>default</key>
 			<array>
 				<string></string>
-				<string>ccbResources/ccbButtonHighlighted.png</string>
+				<string></string>
 			</array>
 			<key>affectsProperties</key>
 			<array>
@@ -310,7 +310,7 @@
 			<key>default</key>
 			<array>
 				<string></string>
-				<string>ccbResources/ccbButtonNormal.png</string>
+				<string></string>
 			</array>
 			<key>affectsProperties</key>
 			<array>
@@ -403,7 +403,7 @@
 			<key>default</key>
 			<array>
 				<string></string>
-				<string>ccbResources/ccbButtonNormal.png</string>
+				<string></string>
 			</array>
 			<key>affectsProperties</key>
 			<array>
@@ -704,6 +704,56 @@
 			<string>Position</string>
 			<key>name</key>
 			<string>shadowOffset</string>
+		</dict>
+		<dict>
+			<key>displayName</key>
+			<string>CCScale9Sprite</string>
+			<key>name</key>
+			<string>CCSprite</string>
+			<key>type</key>
+			<string>Separator</string>
+			<key>dontSetInEditor</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Margin left</string>
+			<key>type</key>
+			<string>Integer</string>
+			<key>name</key>
+			<string>marginLeft</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Margin right</string>
+			<key>type</key>
+			<string>Integer</string>
+			<key>name</key>
+			<string>marginRight</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Margin top</string>
+			<key>type</key>
+			<string>Integer</string>
+			<key>name</key>
+			<string>marginTop</string>
+		</dict>
+		<dict>
+			<key>default</key>
+			<integer>0</integer>
+			<key>displayName</key>
+			<string>Margin bottom</string>
+			<key>type</key>
+			<string>Integer</string>
+			<key>name</key>
+			<string>marginBottom</string>
 		</dict>
 	</array>
 </dict>
