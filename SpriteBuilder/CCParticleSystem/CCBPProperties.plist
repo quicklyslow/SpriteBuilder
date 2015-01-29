@@ -365,7 +365,7 @@
 			<key>saveInTemplate</key>
 			<true/>
 			<key>default</key>
-			<string>ccbResources/ccbParticleFire.png</string>
+			<string>resources/ccbParticleFire.png</string>
 			<key>displayName</key>
 			<string>Texture</string>
 			<key>name</key>

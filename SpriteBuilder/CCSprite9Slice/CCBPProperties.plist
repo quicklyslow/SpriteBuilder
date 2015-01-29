@@ -37,12 +37,12 @@
 			<key>displayName</key>
 			<string>Content size</string>
 		</dict>
-        <dict>
-            <key>name</key>
-            <string>effects</string>
-            <key>type</key>
-            <string>None</string>
-        </dict>
+		<dict>
+			<key>name</key>
+			<string>effects</string>
+			<key>type</key>
+			<string>None</string>
+		</dict>
 	</array>
 	<key>properties</key>
 	<array>
@@ -58,7 +58,7 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin left</string>
 			<key>type</key>
@@ -68,7 +68,7 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin right</string>
 			<key>type</key>
@@ -78,7 +78,7 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin top</string>
 			<key>type</key>
@@ -88,7 +88,7 @@
 		</dict>
 		<dict>
 			<key>default</key>
-			<real>0.33</real>
+			<integer>0</integer>
 			<key>displayName</key>
 			<string>Margin bottom</string>
 			<key>type</key>

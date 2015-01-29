@@ -71,28 +71,21 @@
 
 - (NSImage*) previewForResolution:(NSString *)res
 {
-    
-    NSString* autoPath = [self absoluteAutoPathForResolution:res];
-    if(!autoPath) return NULL;
-    
-    return [[NSImage alloc] initWithContentsOfFile:autoPath];
-}
-
-- (NSString*)absoluteAutoPathForResolution:(NSString *)res {
-    
     if (!res) res = @"auto";
-    
+
     if (_type == kCCBResTypeImage)
     {
         NSString* fileName = [_filePath lastPathComponent];
         NSString* dirPath = [_filePath stringByDeletingLastPathComponent];
         NSString* resDirName = [@"resources-" stringByAppendingString:res];
-        
-        return [[dirPath stringByAppendingPathComponent:resDirName] stringByAppendingPathComponent:fileName];
-        
+
+        NSString* autoPath = [[dirPath stringByAppendingPathComponent:resDirName] stringByAppendingPathComponent:fileName];
+
+        NSImage* img = [[NSImage alloc] initWithContentsOfFile:autoPath];
+        return img;
     }
-    
-    return nil;
+
+    return NULL;
 }
 
 - (NSComparisonResult) compare:(id) obj
@@ -205,10 +198,18 @@
 
         NSString* dir = [self.filePath stringByDeletingLastPathComponent];
         NSString* file = [self.filePath lastPathComponent];
-        NSString* autoPath = [[dir stringByAppendingPathComponent:@"resources-auto"] stringByAppendingPathComponent:file];
+        NSString* abPath = [dir stringByAppendingPathComponent:file];
 
-        if ([fm fileExistsAtPath:autoPath]) return autoPath;
-        else return NULL;
+        if ([fm fileExistsAtPath:abPath])
+        {
+            return abPath;
+        }
+        else
+        {
+            NSString* autoPath = [[dir stringByAppendingPathComponent:@"resources-auto"] stringByAppendingPathComponent:file];
+            if ([fm fileExistsAtPath:autoPath]) return abPath;
+        }
+        return NULL;
     }
     else if (self.type == kCCBResTypeCCBFile)
     {
@@ -232,14 +233,23 @@
 
         NSString* dir = [self.filePath stringByDeletingLastPathComponent];
         NSString* file = [self.filePath lastPathComponent];
-        NSString* autoPath = [[dir stringByAppendingPathComponent:@"resources-auto"] stringByAppendingPathComponent:file];
+        NSString* abPath = [dir stringByAppendingPathComponent:file];
 
-        if ([fm fileExistsAtPath:autoPath])
+        if ([fm fileExistsAtPath:abPath])
         {
-            NSDate* fileDate = [CCBFileUtil modificationDateForFile:autoPath];
+            NSDate* fileDate = [CCBFileUtil modificationDateForFile:abPath];
             return ((NSUInteger)[fileDate timeIntervalSinceReferenceDate]);
         }
-        else return 0;
+        else
+        {
+            NSString* autoPath = [[dir stringByAppendingPathComponent:@"resources-auto"] stringByAppendingPathComponent:file];
+            if ([fm fileExistsAtPath:autoPath])
+            {
+                NSDate* fileDate = [CCBFileUtil modificationDateForFile:autoPath];
+                return ((NSUInteger)[fileDate timeIntervalSinceReferenceDate]);
+            }
+        }
+        return 0;
     }
     else if (self.type == kCCBResTypeCCBFile)
     {
