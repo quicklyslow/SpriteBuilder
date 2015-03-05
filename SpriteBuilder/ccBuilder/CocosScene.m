@@ -27,6 +27,7 @@
 #import "CCBGlobals.h"
 #import "SceneGraph.h"
 #import "AppDelegate.h"
+#import "CCBReaderInternalV1.h"
 #import "NodeInfo.h"
 #import "PlugInManager.h"
 #import "PlugInNode.h"
@@ -1155,10 +1156,15 @@ static NSString * kZeroContentSizeImage = @"sel-round.png";
         }
     }
     
+    CCNode* child = NULL;
     // Visit children
     for (int i = 0; i < [node.children count]; i++)
     {
-        [self nodesUnderPt:pt rootNode:[node.children objectAtIndex:i] nodes:nodes];
+        child = [node.children objectAtIndex:i];
+        if (child.userObject)
+        {
+            [self nodesUnderPt:pt rootNode:[node.children objectAtIndex:i] nodes:nodes];
+        }
     }
   
     //Don't select nodes that are locked or hidden.
